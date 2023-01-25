@@ -2,10 +2,12 @@
   "name": "demos",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "secondDemo/index.js",
   "scripts": {
-    "start": "nodemon firstDemo/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node firstDemo/server.js",
+    "startFirstDev": "nodemon firstDemo/server.js",
+    "startSecond": "node secondDemo/server.js",
+    "startSecondDev": "nodemon secondDemo/server.js"
   },
   "keywords": [],
   "author": "",
