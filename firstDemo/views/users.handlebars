@@ -1,0 +1,23 @@
+<ul>
+
+    {{#each usersList}}
+
+    <li>
+
+        ID: {{id}} - {{username}}
+
+        {{#if isAdmin}}
+            <span>is Administrator!</span>
+            {{else}}
+            <span>is normal User!</span>
+        {{/if}}
+
+        <a href="/users/{{id}}">View</a>
+    </li>
+
+    {{else}}
+    <span>(No Users)</span>
+
+    {{/each}}
+
+</ul>
