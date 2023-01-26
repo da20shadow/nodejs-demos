@@ -1,4 +1,10 @@
+const db = require('../data/db.json');
 const Product = require("../models/Product");
+
+exports.getAllProductsPage = (req, res) => {
+    res.render('products',{products: db.products});
+};
+
 exports.getCreateProductPage = (req, res) => {
     res.render('createProduct');
 };
