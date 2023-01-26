@@ -4,10 +4,10 @@
   "description": "",
   "main": "secondDemo/index.js",
   "scripts": {
-    "start": "node firstDemo/server.js",
-    "startFirstDev": "nodemon firstDemo/server.js",
-    "startSecond": "node secondDemo/server.js",
-    "startSecondDev": "nodemon secondDemo/server.js"
+    "start": "SET node_env=production&& node firstDemo/server.js",
+    "firstDemoDev": "nodemon firstDemo/server.js",
+    "secondDemo": "node secondDemo/server.js",
+    "secondDemoDev": "nodemon secondDemo/server.js"
   },
   "keywords": [],
   "author": "",
