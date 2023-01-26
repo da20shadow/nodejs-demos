@@ -34,10 +34,12 @@ header nav a {
   color: #dcdee7;
   text-decoration: none;
   border: 1px solid transparent;
+  transition: ease-in-out 300ms;
 }
 header nav a:hover {
   color: #7f99af;
   border: 1px solid #eceef5;
+  transform: scale(1.02);
 }
 
 main {
@@ -125,8 +127,16 @@ form button {
   color: aliceblue;
 }
 
+.grid-cols-4 {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 10px;
+  padding: 25px;
+}
+
 .flex {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 10px;
 }
