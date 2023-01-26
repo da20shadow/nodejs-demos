@@ -1,7 +1,6 @@
 const express = require('express');
 const config = require('./config/appConfig');
 const setupViewEngine = require('./config/viewEngine');
-const productController = require('./controllers/CubeController');
 const routes = require('./routes');
 
 const app = express();
@@ -11,6 +10,9 @@ setupViewEngine(app);
 
 //Set path for our static files with middleware
 app.use(express.static('./secondDemo/public'));
+//Read request body
+app.use(express.urlencoded({extended: false}));
+//User routes
 app.use(routes);
 
 app.listen(config.PORT, () => {
