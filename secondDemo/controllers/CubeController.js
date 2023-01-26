@@ -10,8 +10,9 @@ exports.getCreateProductPage = (req, res) => {
 };
 
 exports.saveProduct = (req, res) => {
-    const product = new Product(req.body);
+    const {name, description, category, price} = req.body;
+    const product = new Product(name,description,price,category);
     Product.save(product)
-    console.log(`Product Created! ${product.name} - $ ${product.price}`);
+    console.log(`Product Created! ${product.name} - $${product.price}`);
     res.redirect('/products');
 };
