@@ -80,6 +80,19 @@ form button {
   display: block;
 }
 
+.product {
+  padding: 25px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  background-color: #7f99af;
+  box-shadow: 1px 1px 15px 1px lightslategray;
+  transition: ease-in-out 200ms;
+}
+.product:hover {
+  transform: scale(1.03);
+  background-color: #6c8aa4;
+}
+
 .not-found {
   display: flex;
   justify-content: center;

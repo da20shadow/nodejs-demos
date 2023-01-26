@@ -61,7 +61,9 @@ form {
   border-radius: 7px;
   padding: 5vh 5vw;
 
-  label{color: #5d5d5d;}
+  label {
+    color: #5d5d5d;
+  }
 
   input {
     padding: 10px;
@@ -84,6 +86,20 @@ form {
   button {
     margin-top: 20px;
     display: block;
+  }
+}
+
+.product {
+  padding: 25px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  background-color: #7f99af;
+  box-shadow: 1px 1px 15px 1px lightslategray;
+  transition: ease-in-out 200ms;
+
+  &:hover {
+    transform: scale(1.03);
+    background-color: #6c8aa4;
   }
 }
 
