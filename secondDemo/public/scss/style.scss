@@ -52,6 +52,41 @@ main {
   border-radius: 9px;
 }
 
+form {
+  background-color: #c3ccd4;;
+  width: 75%;
+  margin: 25px auto;
+  font-family: "Roboto Thin", sans-serif;
+  box-shadow: 1px 1px 15px 1px #aeb0b3;
+  border-radius: 7px;
+  padding: 5vh 5vw;
+
+  label{color: #5d5d5d;}
+
+  input {
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  textarea {
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  select {
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  button {
+    margin-top: 20px;
+    display: block;
+  }
+}
+
 .not-found {
   display: flex;
   justify-content: center;
@@ -64,19 +99,33 @@ main {
   width: 75vw;
   box-shadow: 1px 1px 14px 0 brown;
 
-  a {
-    text-decoration: none;
-    padding: 5px 10px;
-    border: 2px double darkblue;
-    border-radius: 3px;
-    background-color: rgba(27, 106, 197, 0.5);
-    color: blue;
-
-    &:hover {
-      background-color: rgb(40, 56, 91);
-      color: aliceblue;
-    }
+  h2 {
+    margin-bottom: 3vh;
   }
+
+}
+
+.btn {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 2px double darkblue;
+  border-radius: 3px;
+  background-color: rgba(27, 106, 197, 0.5);
+  color: blue;
+
+  &:hover {
+    background-color: rgb(40, 56, 91);
+    color: aliceblue;
+  }
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 footer {
