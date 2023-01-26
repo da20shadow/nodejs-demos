@@ -1,6 +1,8 @@
 const express = require('express');
 const config = require('./config/appConfig');
 const setupViewEngine = require('./config/viewEngine');
+const productController = require('./controllers/CubeController');
+const routes = require('./routes');
 
 const app = express();
 setupViewEngine(app);
@@ -9,10 +11,7 @@ setupViewEngine(app);
 
 //Set path for our static files with middleware
 app.use(express.static('./secondDemo/public'));
-
-app.get('/', (req,res) => {
-    res.render('home');
-})
+app.use(routes);
 
 app.listen(config.PORT, () => {
     console.log(`Server is running on port ${config.PORT}...`);
