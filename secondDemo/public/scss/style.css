@@ -82,6 +82,21 @@ form button {
   display: block;
 }
 
+.search {
+  display: flex;
+  padding: 20px;
+}
+.search input {
+  width: 60%;
+}
+.search select {
+  width: 20%;
+}
+.search .search-btn {
+  cursor: pointer;
+  width: 20%;
+}
+
 .product {
   padding: 25px;
   border: 1px solid gray;

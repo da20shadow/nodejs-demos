@@ -2,7 +2,18 @@ const db = require('../data/db.json');
 const Product = require("../models/Product");
 
 exports.getAllProductsPage = (req, res) => {
-    res.render('products',{products: db.products});
+    const {name, category} = req.query;
+    let products = db.products;
+    if (name){
+        products = products.filter(p => p.name.toLowerCase().includes(name.toLowerCase()))
+    }
+
+    let currentCategory;
+    if (category){
+        products = products.filter(p => p.category === category);
+        currentCategory = category.charAt(0).toUpperCase() + category.slice(1);
+    }
+    res.render('products',{products, currentSearch: name, currentCategory});
 };
 
 exports.getProductDetailsPage = (req, res) => {

@@ -1,5 +1,26 @@
-<main class="grid-cols-4">
-    {{#each products}}
-        {{>product}}
-    {{/each}}
+<main>
+
+    <form class="search" action="/products" method="GET">
+
+        <input name="name" type="text"
+               min="2" max="45"
+               placeholder="Product.."
+               value="{{currentSearch}}" />
+
+        <select name="category">
+            <option style="background: #3f598f;" value="">{{#if currentCategory}} {{currentCategory}} {{else}} ... {{/if}}</option>
+            <option value="keyboards" >Keyboards</option>
+            <option value="cameras" >Cameras</option>
+        </select>
+
+        <input class="search-btn" type="submit" value="Search">
+
+    </form>
+
+    <section class="grid-cols-4">
+        {{#each products}}
+            {{>product}}
+        {{/each}}
+    </section>
+
 </main>
