@@ -1,7 +1,7 @@
 const handlebars = require("express-handlebars");
 function setupViewEngine(app){
     //Setting the extension to be .hbs
-    //Here in this config also can be changed the layout directory and partials
+    //Here in this config also can be changed the layouts directory and partials
     app.engine('hbs', handlebars.engine({
         extname: 'hbs'
     }));
