@@ -4,6 +4,8 @@ const router = require('express').Router();
 
 router.get('/', staticPagesController.getHomePage);
 
+router.get('/products', productController.getAllProductsPage);
+
 router.get('/add-product', productController.getCreateProductPage);
 
 router.post('/save-product', productController.saveProduct);
