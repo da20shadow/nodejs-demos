@@ -13,4 +13,70 @@ body {
   background-color: #878a91;
 }
 
+header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 0 10vw;
+  height: 10vh;
+  background-color: #28385b;
+  border-bottom: 1px solid gray;
+}
+header nav {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+header nav a {
+  padding: 5px 10px;
+  font-size: 1rem;
+  font-family: "Roboto Thin", sans-serif;
+  color: #dcdee7;
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+header nav a:hover {
+  color: #7f99af;
+  border: 1px solid #eceef5;
+}
+
+main {
+  width: 90vw;
+  margin: 10vh auto;
+  padding: 5vh 3vw;
+  border: 4px dashed #3d3d3d;
+  border-radius: 9px;
+}
+
+.not-found {
+  display: flex;
+  justify-content: center;
+  color: darkred;
+  margin: 50px auto;
+  padding: 25px;
+  border: 1px solid brown;
+  background-color: rgba(240, 128, 128, 0.7);
+  border-radius: 5px;
+  width: 75vw;
+  box-shadow: 1px 1px 14px 0 brown;
+}
+.not-found a {
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 2px double darkblue;
+  border-radius: 3px;
+  background-color: rgba(27, 106, 197, 0.5);
+  color: blue;
+}
+.not-found a:hover {
+  background-color: rgb(40, 56, 91);
+  color: aliceblue;
+}
+
+footer {
+  text-align: center;
+  padding: 5vh 0;
+  background-color: #28385b;
+}
+
 /*# sourceMappingURL=style.css.map */
