@@ -1,5 +1,6 @@
 const db = require('../data/db.json');
-const Product = require("../models/Product.old");
+// const Product = require("../models/Product.old");
+const Product = require('../models/Product');
 
 exports.getAllProductsPage = (req, res) => {
     const {name, category} = req.query;
@@ -28,10 +29,10 @@ exports.getCreateProductPage = (req, res) => {
     res.render('createProduct');
 };
 
-exports.saveProduct = (req, res) => {
-    const {name, description, category, price} = req.body;
-    const product = new Product(name,description,price,category);
-    Product.save(product)
+exports.saveProduct = async (req, res) => {
+    const {name, description, imgUrl,category, price} = req.body;
+    const product = new Product({name, description, imgUrl,price, category});
+    await product.save();
     console.log(`Product Created! ${product.name} - $${product.price}`);
     res.redirect('/products');
 };

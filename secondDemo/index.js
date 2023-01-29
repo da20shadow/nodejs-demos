@@ -23,6 +23,6 @@ dbInit()
         console.log(`Server is running on port ${config.PORT}...`);
     })
     ).catch((err) => {
-    console.log(err);
+    console.log('Error: ',err.message);
     });
 
