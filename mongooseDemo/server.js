@@ -1,11 +1,6 @@
 const mongoose = require('mongoose');
 const {get} = require("mongoose");
 
-//Custom Validations
-productSchema.path('name').validate(function () {
-    return !this.name.startWith('N');
-}, 'The must start with (N)!');
-
 //Schema model and Validations
 const productSchema = new mongoose.Schema({
     name: {
@@ -31,6 +26,11 @@ const productSchema = new mongoose.Schema({
 });
 
 const Product = mongoose.model('Product', productSchema);
+
+//Custom Validations
+productSchema.path('name').validate(function () {
+    return !this.name.startWith('N');
+}, 'The must start with (N)!');
 
 //Adding additional methods
 productSchema.methods.printDetails = function () {

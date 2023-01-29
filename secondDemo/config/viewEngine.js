@@ -7,7 +7,7 @@ function setupViewEngine(app){
     }));
     app.set('view engine', 'hbs');
     //Set default views folder path
-    app.set('views', './secondDemo/views');
+    app.set('views', './secondDemo/views'); //Default is ./views
 }
 
 module.exports = setupViewEngine;
