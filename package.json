@@ -7,7 +7,7 @@
     "start": "SET node_env=production&& node firstDemo/server.js",
     "firstDemoDev": "nodemon firstDemo/server.js",
     "secondDemo": "node secondDemo/server.js",
-    "secondDemoDev": "nodemon secondDemo/server.js",
+    "secondDemoDev": "nodemon secondDemo/index.js",
     "mongooseDemoDev": "node mongooseDemo/server.js"
   },
   "keywords": [],

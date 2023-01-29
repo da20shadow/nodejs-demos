@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 
-const dbUri = 'mongodb://127.0.0.1:27017/demo';
+const config = require('./appConfig');
 
 async function dbInit(){
-    await mongoose.connect(dbUri); //If there is no connection will not print the log!
+    mongoose.set('strictQuery', false);
+    await mongoose.connect(config.DB_URI); //If there is no connection will not print the log!
     console.log('DB Connected!');
 }
 

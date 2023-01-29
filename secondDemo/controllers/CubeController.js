@@ -1,5 +1,5 @@
 const db = require('../data/db.json');
-const Product = require("../models/Product");
+const Product = require("../models/Product.old");
 
 exports.getAllProductsPage = (req, res) => {
     const {name, category} = req.query;
