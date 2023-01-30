@@ -22,7 +22,7 @@ exports.getAllProductsPage = async (req, res) => {
 exports.getProductDetailsPage = async (req, res) => {
     const productId = req.params.id;
     if (!productId) { return res.redirect('404');}
-    const product = await Product.findById(productId).lean();
+    const product = await Product.findById(productId).populate('accessories').lean();
     console.log('product: ',product);
     if (!product){ return res.redirect('404'); }
     res.render('productDetails', {product});
@@ -42,7 +42,8 @@ exports.saveProduct = async (req, res) => {
 
 exports.getAttachAccessory = async (req, res) => {
     const product = await Product.findById(req.params.id).lean();
-    const accessoryList = await Accessory.find().lean();
+    //Find all accessories that are not in product accessories!
+    const accessoryList = await Accessory.find({_id: {$nin: product.accessories}}).lean();
     res.render('accessory/attach',{product,accessoryList});
 };
 
@@ -51,6 +52,6 @@ exports.postAttachAccessory = async (req,res) => {
     const product = await Product.findById(productId);
     const accessoryId = req.body.accessory;
     product.accessories.push(accessoryId);
-    product.save();
+    await product.save();
     res.redirect(`/product/${productId}`);
 }
