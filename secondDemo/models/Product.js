@@ -1,4 +1,5 @@
 const {Schema, model, Types} = require('mongoose');
+const {validateURL} = require('../utils/validators');
 
 const productSchema = new Schema({
     name: {
@@ -15,7 +16,11 @@ const productSchema = new Schema({
     },
     imgUrl: {
         type: String,
-        required: true, //TODO: add url validation with regex
+        required: true,
+        validate: {
+            validator: validateURL,
+            message: 'Please enter valid image url!'
+        }
     },
     price: {
         type: Number,

@@ -1,4 +1,5 @@
 const {Schema,model} = require('mongoose');
+const {validateURL} = require("../utils/validators");
 
 const accessorySchema = new Schema({
     name: {
@@ -20,6 +21,10 @@ const accessorySchema = new Schema({
     },
     imgUrl: {
         type: String,
+        validate: {
+            validator: validateURL,
+            message: 'Please enter valid image url!'
+        }
     }
 });
 
