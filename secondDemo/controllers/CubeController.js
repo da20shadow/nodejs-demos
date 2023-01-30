@@ -1,6 +1,7 @@
 // const db = require('../data/db.json');
 // const Product = require("../models/Product.old");
 const Product = require('../models/Product');
+const Accessory = require('../models/Accessory');
 
 exports.getAllProductsPage = async (req, res) => {
     const {name, category} = req.query;
@@ -37,4 +38,10 @@ exports.saveProduct = async (req, res) => {
     await product.save();
     console.log(`Product Created! ${product.name} - $${product.price}`);
     res.redirect('/products');
+};
+
+exports.getAttachAccessory = async (req, res) => {
+    const product = await Product.findById(req.params.id).lean();
+    const accessoryList = await Accessory.find().lean();
+    res.render('accessory/attach',{product,accessoryList});
 };

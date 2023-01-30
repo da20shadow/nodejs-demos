@@ -13,6 +13,8 @@ router.post('/save-product', productController.saveProduct);
 
 router.get('/product/:id', productController.getProductDetailsPage);
 
+router.get('/product/:id/attach', productController.getAttachAccessory);
+
 //If path starts with /accessory send it to accessoryController
 router.use('/accessory', accessoryController);
 

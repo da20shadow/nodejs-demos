@@ -1,0 +1,15 @@
+<main>
+
+    <h1>Attach Accessor to {{product.name}}</h1>
+    <img src="{{product.imgUrl}}" alt="{{product.name}}" width="100%">
+    <p>${{product.price}}</p>
+
+    <form method="post">
+        <select name="accessor">
+            <option value="">Select Accessory</option>
+            {{#each accessoryList}}
+                <option value="{{this._id}}">{{this.name}}</option>
+            {{/each}}
+        </select>
+    </form>
+</main>

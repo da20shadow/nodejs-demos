@@ -11,7 +11,7 @@ router.post('/create', async (req, res) => {
 
     const createdAccessory = await Accessory.create({name, description, category, price, imgUrl});
 
-    console.log(createdAccessory);
+    console.log('Created Accessory: ',createdAccessory);
 
     res.redirect('/');
 });
