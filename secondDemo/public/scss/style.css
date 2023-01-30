@@ -109,6 +109,9 @@ form button {
   transform: scale(1.03);
   background-color: #6c8aa4;
 }
+.product img {
+  width: 100%;
+}
 
 .not-found {
   display: flex;

@@ -1,10 +1,11 @@
-const db = require('../data/db.json');
+// const db = require('../data/db.json');
 // const Product = require("../models/Product.old");
 const Product = require('../models/Product');
 
-exports.getAllProductsPage = (req, res) => {
+exports.getAllProductsPage = async (req, res) => {
     const {name, category} = req.query;
-    let products = db.products;
+    let products = await Product.find().lean();
+    console.log(products)
     if (name){
         products = products.filter(p => p.name.toLowerCase().includes(name.toLowerCase()))
     }
