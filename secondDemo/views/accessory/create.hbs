@@ -1,0 +1,37 @@
+<main>
+
+    <h1>Add Accessory</h1>
+
+    <form action="/save-product" method="post">
+
+        <label>Accessory Name:
+            <input name="name" type="text" placeholder="Accessory Title..." required>
+        </label>
+
+        <label>Description
+            <textarea name="description" rows="10" placeholder="Description..."></textarea>
+        </label>
+
+        <label>Image URL:
+            <input name="imgUrl" type="text" placeholder="https://www.site.com/img/keyboard.png" required>
+        </label>
+
+        <div class="flex">
+            <label>Price
+                <input name="price" type="number" step="0.01" placeholder="$1.00" required>
+            </label>
+
+            <label>Category
+                <select name="category">
+                    <option value="">...</option>
+                    <option value="keyboards">Keyboards</option>
+                    <option value="cameras">Cameras</option>
+                </select>
+            </label>
+        </div>
+
+        <button class="btn" type="submit">Add Accessory</button>
+
+    </form>
+
+</main>
