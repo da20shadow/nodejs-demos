@@ -3,14 +3,21 @@
     <h1>Attach Accessor to {{product.name}}</h1>
     <img src="{{product.imgUrl}}" alt="{{product.name}}" width="100%">
     <p>${{product.price}}</p>
+    <br>
+    <a class="btn" href="/product/{{product._id}}">Back</a>
 
     <form method="post">
-        <select name="accessory">
-            <option value="">Select Accessory</option>
-            {{#each accessoryList}}
-                <option value="{{this._id}}">{{this.name}}</option>
-            {{/each}}
-        </select>
-        <button class="btn" type="submit">Attach</button>
+        {{#if accessoryList}}
+            <select name="accessory">
+                <option value="">Select Accessory</option>
+                {{#each accessoryList}}
+                    <option value="{{this._id}}">{{this.name}}</option>
+                {{/each}}
+            </select>
+            <button class="btn" type="submit">Attach</button>
+        {{else}}
+            <h3>This product has all available accessories. Or there are no accessories at all!</h3>
+        {{/if}}
+
     </form>
 </main>

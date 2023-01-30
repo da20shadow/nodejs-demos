@@ -5,7 +5,19 @@
         <p>{{product.description}}</p>
         <p>${{product.price}}</p>
         <p>{{product.category}}</p>
-        <button class="btn">Buy</button>
-        <a href="/product/{{product._id}}/attach" class="btn">Attach</a>
+        <div style="margin: 25px auto;">
+            <a href="/products" class="btn">Back</a>
+            <a href="#" class="btn">Buy</a>
+            <a href="/product/{{product._id}}/attach" class="btn">Attach</a>
+        </div>
     </article>
+
+    <div class="flex" style="border: 1px solid darkcyan;">
+        {{#each product.accessories}}
+            {{>accessory}}
+        {{else}}
+          <h3>This product has no accessories yet.</h3>
+        {{/each}}
+    </div>
+
 </main>
