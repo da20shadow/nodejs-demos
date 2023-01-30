@@ -45,3 +45,12 @@ exports.getAttachAccessory = async (req, res) => {
     const accessoryList = await Accessory.find().lean();
     res.render('accessory/attach',{product,accessoryList});
 };
+
+exports.postAttachAccessory = async (req,res) => {
+    const productId = req.params.id;
+    const product = await Product.findById(productId);
+    const accessoryId = req.body.accessory;
+    product.accessories.push(accessoryId);
+    product.save();
+    res.redirect(`/product/${productId}`);
+}

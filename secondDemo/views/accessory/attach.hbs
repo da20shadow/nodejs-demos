@@ -5,11 +5,12 @@
     <p>${{product.price}}</p>
 
     <form method="post">
-        <select name="accessor">
+        <select name="accessory">
             <option value="">Select Accessory</option>
             {{#each accessoryList}}
                 <option value="{{this._id}}">{{this.name}}</option>
             {{/each}}
         </select>
+        <button class="btn" type="submit">Attach</button>
     </form>
 </main>

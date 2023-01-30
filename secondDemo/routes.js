@@ -15,6 +15,8 @@ router.get('/product/:id', productController.getProductDetailsPage);
 
 router.get('/product/:id/attach', productController.getAttachAccessory);
 
+router.post('/product/:id/attach', productController.postAttachAccessory);
+
 //If path starts with /accessory send it to accessoryController
 router.use('/accessory', accessoryController);
 

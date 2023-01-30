@@ -1,4 +1,4 @@
-const {Schema, model} = require('mongoose');
+const {Schema, model, Types} = require('mongoose');
 
 const productSchema = new Schema({
     name: {
@@ -26,7 +26,11 @@ const productSchema = new Schema({
         type: String,
         required: true,
         enum: ['keyboards', 'cameras'],
-    }
+    },
+    accessories: [{
+        type: Types.ObjectId,
+        ref: 'Accessory'
+    }]
 });
 
 const Product = model('Product', productSchema);
