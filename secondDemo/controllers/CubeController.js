@@ -18,10 +18,11 @@ exports.getAllProductsPage = async (req, res) => {
     res.render('products',{products, currentSearch: name, currentCategory});
 };
 
-exports.getProductDetailsPage = (req, res) => {
-    const productId = Number(req.params.id);
+exports.getProductDetailsPage = async (req, res) => {
+    const productId = req.params.id;
     if (!productId) { return res.redirect('404');}
-    const product = db.products.find(p => p.id === productId);
+    const product = await Product.findById(productId).lean();
+    console.log('product: ',product);
     if (!product){ return res.redirect('404'); }
     res.render('productDetails', {product});
 }
