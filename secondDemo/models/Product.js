@@ -25,7 +25,7 @@ const productSchema = new Schema({
     category: {
         type: String,
         required: true,
-        enum: ['keyboards', 'cameras']
+        enum: ['keyboards', 'cameras'],
     }
 });
 
