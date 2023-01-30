@@ -35,7 +35,13 @@ exports.getCreateProductPage = (req, res) => {
 exports.saveProduct = async (req, res) => {
     const {name, description, imgUrl,category, price} = req.body;
     const product = new Product({name, description, imgUrl,price, category});
-    await product.save();
+
+    try {
+        await product.save();
+    }catch (err){
+        console.log('Error: ', err.message);
+        return res.redirect('/add-product');
+    }
     console.log(`Product Created! ${product.name} - $${product.price}`);
     res.redirect('/products');
 };
@@ -52,6 +58,10 @@ exports.postAttachAccessory = async (req,res) => {
     const product = await Product.findById(productId);
     const accessoryId = req.body.accessory;
     product.accessories.push(accessoryId);
-    await product.save();
+    try {
+        await product.save();
+    }catch (err){
+        console.log('Error', err);
+    }
     res.redirect(`/product/${productId}`);
 }
