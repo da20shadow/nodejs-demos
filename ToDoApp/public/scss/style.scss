@@ -1,0 +1,54 @@
+html {
+  box-sizing: border-box;
+  font-family: "Cambria Math", sans-serif;
+  font-size: 17px;
+}
+
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #031d33;
+  color: #aeb0b3;
+}
+
+main {
+  width: 90vw;
+  margin: 50px auto;
+  padding: 50px 25px;
+  background-color: #28385b;
+  border-radius: 9px;
+}
+
+header {
+  display: flex;
+  gap: 20px;
+  background-color: #28385b;
+  height: 7vh;
+  width: 90vw;
+  margin: 0 auto;
+
+  nav {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+
+    a {
+      padding: 5px 10px;
+      color: #aeb0b3;
+      text-decoration: none;
+      border: 1px solid transparent;
+      border-radius: 5px;
+
+      &:hover {
+        color: #7f99af;
+        text-decoration: underline;
+        border: 1px solid #7f99af;
+      }
+    }
+  }
+}
