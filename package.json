@@ -8,14 +8,19 @@
     "firstDemoDev": "nodemon firstDemo/server.js",
     "secondDemo": "node secondDemo/server.js",
     "secondDemoDev": "nodemon secondDemo/index.js",
-    "mongooseDemoDev": "node mongooseDemo/server.js"
+    "mongooseDemoDev": "node mongooseDemo/server.js",
+    "cookiesDev": "nodemon Cookies/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cookie-parser": "^1.4.6",
     "express": "^4.18.2",
     "express-handlebars": "^6.0.6",
+    "express-session": "^1.17.3",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.9.0",
     "nodemon": "^2.0.20"
   }
