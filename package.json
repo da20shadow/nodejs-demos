@@ -9,7 +9,8 @@
     "secondDemo": "node secondDemo/server.js",
     "secondDemoDev": "nodemon secondDemo/index.js",
     "mongooseDemoDev": "node mongooseDemo/server.js",
-    "cookiesDev": "nodemon Cookies/index.js"
+    "cookiesDev": "nodemon Cookies/index.js",
+    "toDoApp": "nodemon ToDoApp/index.js"
   },
   "keywords": [],
   "author": "",
