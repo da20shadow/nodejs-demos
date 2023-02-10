@@ -6,17 +6,18 @@ router.get('/login', (req, res) => {
     res.render('user/login');
 });
 
-router.post('/login',async (req, res) => {
+router.post('/login', async (req, res) => {
     const {username, password} = req.body;
 
     try {
-       const token = await authService.login(username, password);
-    }catch (err){
+        const token = await authService.login(username, password);
+        res.cookie('auth', token, {httpOnly: true});
+    } catch (err) {
         console.log('Login Error: ', err);
         return res.redirect('/login');
     }
-
-    res.redirect('/profile');
+    console.log('Login POST: ', username)
+    res.redirect('/users/profile');
 });
 
 router.get('/register', (req, res) => {
@@ -25,7 +26,11 @@ router.get('/register', (req, res) => {
 
 router.post('/register', async (req, res) => {
 
-    const {username, password, rePassword} = req.body;
+    const {username, email, password, rePassword} = req.body;
+
+    if (!username || !email || !password || !rePassword) {
+        return res.redirect('/404');
+    }
 
     if (password !== rePassword) {
         return res.redirect('/404');
@@ -37,8 +42,8 @@ router.post('/register', async (req, res) => {
         return res.redirect('/404');
     }
 
-    const user = await authService.register(username, password);
-    console.log('user',user);
+    const user = await authService.register(username, email, password);
+    console.log('User: ', user);
 
     res.redirect('/auth/login');
 });
