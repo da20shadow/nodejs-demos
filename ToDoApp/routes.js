@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const authController = require('./controllers/AuthController');
+const userController = require('./controllers/UserController');
 const taskController = require('./controllers/TaskController');
 const staticPageController = require('./controllers/StaticPageController');
 
@@ -7,10 +8,14 @@ const staticPageController = require('./controllers/StaticPageController');
 router.use('/auth', authController);
 
 //Users CRUD
-// router.use('/users',userController);
+router.use('/users',userController);
 
 //Tasks CRUD
 router.use('/tasks',taskController);
+
+router.get('/404',(req, res) => {
+    res.render('pages/404');
+});
 
 //Home,About etc
 router.use('/',staticPageController);
