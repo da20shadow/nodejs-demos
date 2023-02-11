@@ -1,6 +1,8 @@
 <main>
     <h1>Edit Task</h1>
     <form method="post" >
+        <p style="color:darkred;">{{error}}</p>
+        <p style="color:darkgreen;">{{success}}</p>
         <input name="title"
                type="text"
                value="{{task.title}}"

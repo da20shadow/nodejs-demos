@@ -37,7 +37,37 @@ router.get('/:taskId/edit', isAuthenticated, async (req, res) => {
     // if (task && task.userId !== req.user.id) {
     //     return res.redirect('/tasks');
     // }
+    if (!task){
+        return res.redirect('/404');
+    }
     res.render('tasks/edit', {task});
+});
+
+router.post('/:taskId/edit', isAuthenticated, async (req, res) => {
+    const taskId = req.params.taskId;
+    let task = await taskService.getTaskById(taskId);
+    //TODO if the task user ID is not the current user redirect to 404
+    // if (task && task.userId !== req.user.id) {
+    //     return res.redirect('/tasks');
+    // }
+    if (!task){
+        return res.redirect('/404');
+    }
+    const changedTaskInputValues = req.body;
+    if (task.title !== changedTaskInputValues.title){
+       task = {...task, title: changedTaskInputValues.title}
+    }
+    if (task.description !== changedTaskInputValues.description){
+        task = {...task, description: changedTaskInputValues.description}
+    }
+    let error = '';
+    let success = '';
+    if (changedTaskInputValues.title === undefined && changedTaskInputValues.description === undefined){
+        error = 'Nothing to updated!';
+    }
+    success = await taskService.update(taskId, task);
+
+    res.render('tasks/edit', {task,error,success});
 });
 
 router.get('/:taskId/delete', isAuthenticated, async (req, res) => {
