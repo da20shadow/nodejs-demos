@@ -1,0 +1,15 @@
+<main>
+    <h1>Edit Task</h1>
+    <form method="post" >
+        <input name="title"
+               type="text"
+               value="{{task.title}}"
+               placeholder="Task title...">
+        <textarea name="description"
+                  cols="30"
+                  rows="10"
+                  placeholder="Description...">{{task.description}}</textarea>
+        <button type="submit">Save</button>
+        <a class="btn" href="/tasks" >Cancel</a>
+    </form>
+</main>
