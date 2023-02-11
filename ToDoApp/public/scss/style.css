@@ -57,6 +57,10 @@ input {
   outline: none;
 }
 
+textarea {
+  width: 100%;
+}
+
 header {
   display: flex;
   gap: 20px;
@@ -100,6 +104,19 @@ form {
   border: 1px solid #c3ccd4;
   border-radius: 9px;
   box-shadow: 1px 1px 15px 1px #c3ccd4;
+}
+
+.tasks-list {
+  list-style-type: none;
+}
+.tasks-list li {
+  padding: 10px 20px;
+  border: 1px solid #c3ccd4;
+  background-color: rgba(127, 153, 175, 0.4);
+}
+.tasks-list li:hover {
+  background-color: rgba(127, 153, 175, 0.5);
+  box-shadow: 1px 1px 13px 1px rgba(195, 204, 212, 0.37);
 }
 
 .flex {

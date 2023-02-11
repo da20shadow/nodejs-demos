@@ -59,6 +59,10 @@ input {
   outline: none;
 }
 
+textarea {
+  width: 100%;
+}
+
 .btn {
   @extend button;
 }
@@ -110,6 +114,21 @@ form {
   border-radius: 9px;
   box-shadow: 1px 1px 15px 1px #c3ccd4;
 
+}
+
+.tasks-list {
+  list-style-type: none;
+
+  li {
+    padding: 10px 20px;
+    border: 1px solid #c3ccd4;
+    background-color: rgba(127, 153, 175, 0.40);
+
+    &:hover {
+      background-color: rgba(127, 153, 175, 0.50);
+      box-shadow: 1px 1px 13px 1px rgba(195, 204, 212, 0.37);
+    }
+  }
 }
 
 .flex {
