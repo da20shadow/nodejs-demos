@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const authService = require('../services/authService');
 
+
 //URL: /auth
 router.get('/login', (req, res) => {
     res.render('user/login');
@@ -14,7 +15,7 @@ router.post('/login', async (req, res) => {
         res.cookie('auth', token, {httpOnly: true});
     } catch (err) {
         console.log('Login Error: ', err);
-        return res.redirect('/login');
+        return res.redirect('/auth/login');
     }
     console.log('Login POST: ', username)
     res.redirect('/users/profile');
