@@ -10,6 +10,8 @@ exports.authentication = async (req, res, next) => {
             const decodedToken = await jwt.verify(token, config.JWT_SECRET);
             req.user = decodedToken;
             req.isAuthenticated = true;
+            res.locals.username = decodedToken.username;
+            res.locals.isAuthenticated = true; //Will get this variable in navigation
         } catch (err) {
             console.log(err);
             res.clearCookie('auth');
