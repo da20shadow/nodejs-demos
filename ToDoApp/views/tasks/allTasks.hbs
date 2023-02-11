@@ -1,7 +1,7 @@
 <main>
-    <ul>
-        <li>Task 1</li>
-        <li>Task 2</li>
-        <li>Task 3</li>
+    <ul class="tasks-list">
+        {{#each tasksList}}
+            <li>{{title}} <a class="btn" href="/tasks/{{_id}}/details">View</a></li>
+        {{/each}}
     </ul>
 </main>
