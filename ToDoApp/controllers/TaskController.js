@@ -79,4 +79,16 @@ router.get('/:taskId/delete', isAuthenticated, async (req, res) => {
     res.render('tasks/delete', {task});
 });
 
+router.post('/:taskId/delete', isAuthenticated, async (req, res) => {
+    const taskId = req.params.taskId;
+    const task = await taskService.getTaskById(taskId);
+    //TODO if the task user ID is not the current user redirect to 404
+    // if (task && task.userId !== req.user.id) {
+    //     return res.redirect('/tasks');
+    // }
+    const message = await taskService.delete(taskId);
+    console.log(message);
+    res.redirect('/tasks');
+});
+
 module.exports = router;

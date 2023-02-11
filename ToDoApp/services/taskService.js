@@ -1,6 +1,11 @@
 const Task = require('../models/Task');
 
-exports.update = async function update(taskId, changedTask) {
+exports.delete = async function (taskId) {
+    await Task.findByIdAndDelete(taskId);
+    return 'Successfully Deleted!';
+}
+
+exports.update = async function (taskId, changedTask) {
     console.log(taskId)
     console.log(changedTask)
     await Task.findByIdAndUpdate(taskId, changedTask,{runValidators: true});
