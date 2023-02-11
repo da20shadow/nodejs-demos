@@ -1,6 +1,6 @@
 const {Schema, model, Types} = require('mongoose');
 const bCrypt = require('bcrypt');
-const {validateEmail} = require('../utils/validators');
+const {isValidEmail} = require('../utils/validators');
 
 const userSchema = new Schema({
     username: {
@@ -13,7 +13,7 @@ const userSchema = new Schema({
         required: true,
         minLength: 11,
         validate: {
-            validator: validateEmail,
+            validator: isValidEmail,
             message: 'Please enter valid email!'
         }
     },

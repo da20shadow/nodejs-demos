@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const authService = require('../services/authService');
-
+const {isValidEmail,isValidUsername} = require('../utils/validators');
 
 //URL: /auth
 router.get('/login', (req, res) => {
@@ -9,6 +9,12 @@ router.get('/login', (req, res) => {
 
 router.post('/login', async (req, res) => {
     const {username, password} = req.body;
+
+    if (!isValidUsername(username)){
+        return res.render('user/login',{
+            error:'Username must be between 3 and 45 characters! And can contains only letters digits and underscore'
+        });
+    }
 
     try {
         const token = await authService.login(username, password);
