@@ -20,6 +20,6 @@ exports.addTask = async (title,userId) => {
     return Task.create({title, userId});
 }
 
-exports.getTaskById = async (taskId) => {
+exports.getTaskById = async (taskId,userId) => {
     return Task.findById({_id: taskId}).lean();
 }

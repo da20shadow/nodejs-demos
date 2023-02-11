@@ -8,7 +8,6 @@ const taskSchema = new Schema({
     },
     description: {
         type: String,
-        minLength: 10
     },
     userId: {
         type: Types.ObjectId,

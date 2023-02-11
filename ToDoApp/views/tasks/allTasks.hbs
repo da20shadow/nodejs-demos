@@ -1,7 +1,33 @@
 <main>
-    <ul class="tasks-list">
+<!--    <ul class="tasks-list">-->
+<!--        {{#each tasksList}}-->
+<!--            <li>{{title}} <a class="btn" href="/tasks/{{_id}}/details">View</a></li>-->
+<!--        {{/each}}-->
+<!--    </ul>-->
+
+    <table>
+
+        <thead>
+        <tr style="border: 1px solid #c3ccd4; font-size: 25px;">
+            <td style="border-bottom: 1px solid white; width: 75vw">Title</td>
+            <td style="border-bottom: 1px solid white; text-align: center;">Action</td>
+        </tr>
+        </thead>
+
+        <tbody>
+
         {{#each tasksList}}
-            <li>{{title}} <a class="btn" href="/tasks/{{_id}}/details">View</a></li>
+            <tr>
+                <td style="border-bottom: 1px solid white; width: 75vw">{{title}}</td>
+                <td style="border-bottom: 1px solid white; display: flex; gap: 10px;">
+                    <a class="btn" href="/tasks/{{_id}}/details">View</a>
+                    <a class="btn" href="/tasks/{{_id}}/edit">Edit</a>
+                    <a class="btn" href="/tasks/{{_id}}/delete">Delete</a>
+                </td>
+            </tr>
         {{/each}}
-    </ul>
+
+        </tbody>
+    </table>
+
 </main>
