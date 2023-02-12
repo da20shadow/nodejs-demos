@@ -136,4 +136,29 @@ form {
   width: 50vw;
 }
 
+#error-list {
+  position: fixed;
+  top: 1em;
+  right: 1em;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#error-list li {
+  background-color: #ff0000;
+  color: #ffffff;
+  padding: 1em;
+  margin-bottom: 1em;
+  animation: slide-in 0.5s ease-out forwards;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
 /*# sourceMappingURL=style.css.map */

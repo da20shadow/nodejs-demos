@@ -147,3 +147,48 @@ form {
 .w-50 {
   width: 50vw;
 }
+
+#error-list {
+  position: fixed;
+  top: 1em;
+  right: 1em;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  li {
+    background-color: #ff0000;
+    color: #ffffff;
+    padding: 1em;
+    margin-bottom: 1em;
+    animation: slide-in 0.5s ease-out forwards;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+//#error-message {
+//  display: none;
+//  background-color: #ff0000;
+//  color: #ffffff;
+//  padding: 1em;
+//  position: absolute;
+//  top: 0;
+//  right: 0;
+//  animation: slide-in 0.5s ease-out forwards;
+//}
+
+//@keyframes slide-in {
+//  from {
+//    transform: translateX(100%);
+//  }
+//  to {
+//    transform: translateX(0);
+//  }
+//}

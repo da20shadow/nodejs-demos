@@ -34,6 +34,12 @@
 {{{body}}}
 
 <footer>
+    <script src="/js/scripts.js"></script>
+    {{#if error}}
+        <script>
+            displayErrorMessage('{{error}}');
+        </script>
+    {{/if}}
     <p>Copyright &copy; 2023 <a href="#">da20shadow</a></p>
 </footer>
 </body>
