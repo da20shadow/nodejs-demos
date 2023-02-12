@@ -35,28 +35,30 @@ router.get('/register', (req, res) => {
     res.render('user/register');
 });
 
-router.post('/register', body('email').isEmail(), async (req, res) => {
+router.post('/register', body('email').isEmail(), async (req, res,next) => {
 
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-        return res.status(400).json({errors: errors.array()});
+        // return res.status(400).json({errors: errors.array()});
+        return res.render('user/register',{errors: errors.array()})
     }
 
     const {username, email, password, rePassword} = req.body;
 
     if (!username || !email || !password || !rePassword) {
-        return res.redirect('/404');
+        return res.render('user/register',{error: 'All fields are required!'});
     }
 
     if (password !== rePassword) {
-        return res.redirect('/404');
+        next(new Error('Passwords does not match!'));
+        return res.render('user/register',{error: 'Passwords does not match!' })
     }
 
     const existingUser = await authService.getUserByUsername(username);
 
     if (existingUser) {
-        return res.redirect('/404');
+        return res.render('user/register',{error:'Such user already exists!'});
     }
 
     const user = await authService.register(username, email, password);
