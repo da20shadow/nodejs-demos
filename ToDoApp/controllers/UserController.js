@@ -1,14 +1,16 @@
 const router = require('express').Router();
-const {isAuthenticated} = require('../middlewares/authMiddleware');
 
-router.get('/profile', isAuthenticated, (req, res) => {
+exports.getProfilePage = (req, res) => {
     const user = req.user;
-    console.log('Profile: ', user);
     res.render('user/profile', {user});
-});
+};
 
-router.get('/edit-profile', isAuthenticated, (req, res) => {
+exports.getEditProfilePage = (req, res) => {
     res.render('user/edit-profile');
-});
+};
+
+exports.postEditProfilePage = (req,res) => {
+    //TODO implement edit profile!
+};
 
 module.exports = router;
