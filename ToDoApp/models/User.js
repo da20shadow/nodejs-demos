@@ -5,6 +5,7 @@ const {isValidEmail} = require('../utils/validators');
 const userSchema = new Schema({
     username: {
         type: String,
+        unique: true,
         required: [true, 'Username is required'],
         minLength: [3, 'Username must be between 3 and 45 characters long!'],
         maxLength: [45, 'Username must be between 3 and 45 characters long!']
