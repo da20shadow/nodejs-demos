@@ -5,22 +5,23 @@ const {isValidEmail} = require('../utils/validators');
 const userSchema = new Schema({
     username: {
         type: String,
-        required: true,
-        minLength: 3
+        required: [true, 'Username is required'],
+        minLength: [3, 'Username must be between 3 and 45 characters long!'],
+        maxLength: [45, 'Username must be between 3 and 45 characters long!']
     },
     email: {
         type: String,
-        required: true,
+        required: [true, 'email is required!'],
         minLength: 11,
         validate: {
             validator: isValidEmail,
-            message: 'Please enter valid email!'
+            message: (props) => `${props.value} is invalid email! Please, enter valid email!`
         }
     },
     password: {
         type: String,
         minLength: [8,'Password must be at least 8 characters long!'],
-        required: true,
+        required: [true,'Password is required!'],
     }
 });
 

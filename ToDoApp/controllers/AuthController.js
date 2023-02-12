@@ -1,27 +1,23 @@
 const router = require('express').Router();
+const {body,query,cookie,param,header,validationResult} = require('express-validator');
 const authService = require('../services/authService');
-const {isValidEmail,isValidUsername} = require('../utils/validators');
+const {isValidUsername} = require('../middlewares/middlewareValidators');
 
 //URL: /auth
 router.get('/login', (req, res) => {
-    res.render('user/login');
+    res.render('user/login',{error: 'test error!'});
 });
 
-router.post('/login', async (req, res) => {
+//isValidUsername is middleware that will validate the username
+router.post('/login',isValidUsername, async (req, res) => {
     const {username, password} = req.body;
-
-    if (!isValidUsername(username)){
-        return res.render('user/login',{
-            error:'Username must be between 3 and 45 characters! And can contains only letters digits and underscore'
-        });
-    }
 
     try {
         const token = await authService.login(username, password);
         res.cookie('auth', token, {httpOnly: true});
     } catch (err) {
         console.log('Login Error: ', err);
-        return res.redirect('/auth/login');
+        return res.render('user/login',{error: err.message});
     }
     console.log('Login POST: ', username)
     res.redirect('/users/profile');
@@ -31,7 +27,13 @@ router.get('/register', (req, res) => {
     res.render('user/register');
 });
 
-router.post('/register', async (req, res) => {
+router.post('/register', body('email').isEmail(), async (req, res) => {
+
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return res.status(400).json({errors: errors.array()});
+    }
 
     const {username, email, password, rePassword} = req.body;
 
