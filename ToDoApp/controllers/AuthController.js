@@ -5,12 +5,20 @@ const {isValidUsername} = require('../middlewares/middlewareValidators');
 
 //URL: /auth
 router.get('/login', (req, res) => {
-    res.render('user/login',{error: 'test error!'});
+    res.render('user/login');
 });
 
 //isValidUsername is middleware that will validate the username
 router.post('/login',isValidUsername, async (req, res) => {
     const {username, password} = req.body;
+
+    if (!username){
+        return res.render('user/login',{error: 'Username cannot be empty!'});
+    }
+
+    if (!password){
+        return res.render('user/login',{error: 'Password cannot be empty!'});
+    }
 
     try {
         const token = await authService.login(username, password);

@@ -6,10 +6,15 @@ exports.login = async (username, password) => {
     //in node js "this" in module is here in the module not in the global context
     const user = await this.getUserByUsername(username);
 
-    const isValid = await user.verifyPassword(password);
-    if (!user || !isValid) {
+    if (!user) {
         throw new Error('Invalid username or password!');
     }
+
+    const isValid = await user.verifyPassword(password);
+    if (!isValid) {
+        throw new Error('Invalid username or password!');
+    }
+
     const payload = {id: user._id, username: user.username}
     return await jwt.sign(payload, config.JWT_SECRET, {expiresIn: '1h'});
 }
