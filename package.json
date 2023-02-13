@@ -10,7 +10,8 @@
     "secondDemoDev": "nodemon secondDemo/index.js",
     "mongooseDemoDev": "node mongooseDemo/server.js",
     "cookiesDev": "nodemon Cookies/index.js",
-    "toDoApp": "nodemon ToDoApp/index.js"
+    "toDoApp": "nodemon ToDoApp/index.js",
+    "cryptoApp": "nodemon cryptoTrading/index.js"
   },
   "keywords": [],
   "author": "",
