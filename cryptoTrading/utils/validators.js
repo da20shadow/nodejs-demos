@@ -1,16 +1,20 @@
+const {schemaRules,regexPatterns} = require("../constants");
+
 function isValidEmail(emailInput) {
-    return /^[a-z]+[a-z0-9_]+[@][a-z]+[.][a-z]{2,11}$/.test(emailInput);
+    return regexPatterns.emailPattern.test(emailInput);
 }
 
 function isValidUsername(usernameInput){
-    return /^[a-z]+[a-z0-9_]+$/.test(usernameInput);
+    if (usernameInput.length < schemaRules.minUsernameLength || usernameInput.length > schemaRules.maxUsernameLength) {
+        return false;
+    }
+    return regexPatterns.usernamePattern.test(usernameInput);
 }
 
 function isValidPassword(passwordInput){
-    if (passwordInput.length < 8 || passwordInput > 45) {
+    if (passwordInput.length < schemaRules.minPasswordLength || passwordInput > schemaRules.maxPasswordLength) {
         return false;
     }
-    return /^[a-z]+[a-z0-9_]{3,44}$/.test(passwordInput);
 }
 
 module.exports = {
