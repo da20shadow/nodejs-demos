@@ -1,5 +1,6 @@
 const {Schema, model, Types} = require('mongoose');
 const bCrypt = require('bcrypt');
+const {schemaRules,errorMessages} = require('../constants');
 
 const {isValidEmail} = require("../utils/validators");
 
@@ -14,22 +15,21 @@ const userSchema = new Schema({
         type: String,
         unique: [true,'Username is already registered!'],
         required: [true, 'Username is required'],
-        minLength: [3, 'Username must be between 3 and 45 characters long!'],
-        maxLength: [45, 'Username must be between 3 and 45 characters long!']
+        minLength: [schemaRules.minUsernameLength, errorMessages.shortUsernameErr(schemaRules.minUsernameLength)],
+        maxLength: [schemaRules.maxUsernameLength, errorMessages.longUsernameErr(schemaRules.maxUsernameLength)]
     },
     email: {
         type: String,
         required: [true, 'email is required!'],
         unique: true,
-        minLength: 11,
         validate: {
             validator: isValidEmail,
-            message: (props) => `${props.value} is invalid email! Please, enter valid email!`
+            message: (props) => `Please, enter valid email! ${props.value} is not a valid email!`
         }
     },
     password: {
         type: String,
-        minLength: [8,'Password must be at least 8 characters long!'],
+        minLength: [schemaRules.minPasswordLength,'Password must be at least 8 characters long!'],
         required: [true,'Password is required!'],
     }
 },{

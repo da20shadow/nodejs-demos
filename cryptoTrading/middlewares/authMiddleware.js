@@ -5,7 +5,6 @@ exports.authentication = async (req, res, next) => {
     const token = req.cookies['auth'];
 
     if (token) {
-        //private user
         try {
             const decodedToken = await jwt.verify(token, JWT_SECRET);
             req.user = decodedToken;
