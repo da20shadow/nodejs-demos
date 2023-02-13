@@ -2,7 +2,7 @@ const bCrypt = require("bcrypt");
 const jwt = require('../lib/jsonwebtoken');
 const User = require('../models/User');
 const {isValidEmail,isValidUsername} = require('../utils/validators');
-const {JWT_SECRET} = require('../constants');
+const {errorMessages,jwtConstants} = require('../constants');
 
 exports.findByUsername = async (username) => User.findOne({username});
 exports.findByEmail = async (email) => User.findOne({email});
@@ -11,18 +11,15 @@ exports.findByUsernameOrEmail = async (username,email) => User.findOne({$or: [{e
 exports.login = async (email,password) => {
 
     if (!isValidEmail(email)){
-        throw new Error('Please enter valid email!');
+        throw new Error(errorMessages.invalidLoginDetails);
     }
     const user = await this.findByEmail(email);
     if (!user) {
-        throw new Error('Bad credentials!');
+        throw new Error(errorMessages.invalidLoginDetails);
     }
-    console.log('password: ',password)
-    console.log('user: ',user)
-    console.log('user.password: ',user.password)
     const isPasswordValid = await bCrypt.compare(password,user.password);
     if (!isPasswordValid) {
-        throw new Error('Bad credentials!');
+        throw new Error(errorMessages.invalidLoginDetails);
     }
 
     //Generate Token:
@@ -31,7 +28,7 @@ exports.login = async (email,password) => {
         email,
         username: user.username,
     };
-    const token = await jwt.sign(payload, JWT_SECRET);
+    const token = await jwt.sign(payload, jwtConstants.JWT_SECRET);
     console.log('Token: ', token);
     return token;
 }
@@ -43,21 +40,21 @@ exports.register = async (username,email,password,repeatPassword) => {
     password = password.trim();
 
     if (!isValidUsername(username)){
-        throw new Error('Username must contains only letters digits and underscore!');
+        throw new Error(errorMessages.invalidUsername);
     }
 
     if (!isValidEmail(email)){
-        throw new Error('Please enter valid email!');
+        throw new Error(errorMessages.invalidEmail);
     }
 
     if (password !== repeatPassword) {
-        throw new Error('Password mismatch!');
+        throw new Error(errorMessages.passMismatch);
     }
 
     const existingUser = await this.findByUsernameOrEmail(username, email);
 
     if (existingUser) {
-        throw new Error('Such user already registered!');
+        throw new Error(errorMessages.existingUser);
     }
 
     password = await bCrypt.hash(password, 9);
