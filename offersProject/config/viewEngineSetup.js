@@ -5,6 +5,7 @@ function setupViewEngine(app){
         extname: 'hbs'
     }));
     app.set('view engine', 'hbs');
+    app.set('views', './offersProject/views');
 }
 
 module.exports = setupViewEngine;
