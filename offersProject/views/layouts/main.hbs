@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/public/css/style.css">
+    <title>Exam 2023</title>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/offers">Offers</a>
+        {{#if isAuthenticated}}
+            <a href="/offers/create">Create offer</a>
+            <a href="/auth/logout">Logout</a>
+            <span>Hi {{user.username}}</span>
+        {{else}}
+            <a href="/auth/login">Login</a>
+            <a href="/auth/register">Register</a>
+        {{/if}}
+    </nav>
+</header>
+
+<main>
+    {{{body}}}
+</main>
+
+<footer>
+    <script>
+        function displayErrorMessage(errorMessage) {
+            const errorMessageElement = document.createElement('div');
+            errorMessageElement.textContent = errorMessage;
+            errorMessageElement.style.backgroundColor = '#da5555';
+            errorMessageElement.style.color = '#ffffff';
+            errorMessageElement.style.padding = '1em';
+            errorMessageElement.style.position = 'fixed';
+            errorMessageElement.style.top = '1em';
+            errorMessageElement.style.right = '1em';
+            errorMessageElement.style.animation = 'slide-in 0.5s ease-out forwards';
+
+            document.body.appendChild(errorMessageElement);
+
+            setTimeout(() => {
+                errorMessageElement.style.display = 'none';
+            }, 3000);
+        }
+        {{#if error}}
+            displayErrorMessage('{{error}}');
+        {{/if}}
+    </script>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<section style="display: flex; gap: 25px; flex-wrap: wrap; margin: 25px;">
+    {{#each offers}}
+    <article style="border-radius: 9px 9px 3px 3px; padding: 0; box-shadow: 1px 1px 11px 1px darkcyan;">
+
+        <img style="border-radius: 9px 9px 0 0; max-width: 340px;" src="{{image}}" alt="{{name}}">
+
+        <div style="padding: 25px;">
+            <span style="color:whitesmoke; border-radius: 9px ;padding:5px 10px; background: darkcyan;font-size: 13px;">{{category}}</span>
+            <h3>{{name}}</h3>
+            <p>{{description}}</p>
+            <a href="/offers/{{_id}}/details">Details</a>
+        </div>
+
+    </article>
+    {{else}}
+        <h1>No offers yet!</h1>
+    {{/each}}
+
+</section>

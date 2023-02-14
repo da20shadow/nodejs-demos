@@ -1,0 +1,12 @@
+<h1>Offer Details</h1>
+<section style="margin: 25px auto; padding: 50px; box-shadow: 1px 1px 5px 1px rgba(148,166,183,0.71)">
+    <h1 style="text-align: center">{{offer.name}}</h1>
+    <img style="max-width: 750px; margin: 0 auto;" src="{{offer.image}}" alt="{{offer.name}}" />
+    <p>{{offer.description}}</p>
+    <p>${{offer.price}}</p>
+    <span>{{offer.category}}</span>
+
+    <a href="/offers/{{offer._id}}/edit">Edit</a>
+    <a href="/offers/{{offer._id}}/delete">Delete</a>
+    <a href="/offers/{{offer._id}}/buy">Buy</a>
+</section>
