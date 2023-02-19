@@ -1,0 +1,10 @@
+<section style="margin-top: 150px;">
+    <h2>You are going to delete post with pet "{{pet.name}}".</h2>
+    <h2>Are you sure?</h2>
+    <form method="post">
+        <button style="padding: 10px 20px; background: darkred; color: white; cursor:pointer;"
+                name="yes"
+                type="submit">Yes</button>
+        <a href="/pets/{{pet._id}}/details"><button style="padding: 10px 20px; cursor:pointer; background: gainsboro" type="button">No</button></a>
+    </form>
+</section>
